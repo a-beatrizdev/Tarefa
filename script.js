@@ -4,28 +4,28 @@
 // const tarefa1 = new Tarefa("Estudar javascript")
 
 class Tarefa {
-    constructor(texto){
-    // O construtor é executado automaticamente
-    // Quando usamos "newTarefa"
+    constructor(texto) {
+        // O construtor é executado automaticamente
+        // Quando usamos "newTarefa"
 
-this.texto = texto;
+        this.texto = texto;
 
-this.concluida = false
+        this.concluida = false
 
-}
+    }
 
-// Método toggle()
-// É uma palavra em inglês muito usada na programação
-// Significa - Alternar/trocar/inverter estado
-// Exemplo:
-// Ligado -> desligado
-// Aberto -> fechado
-// True -> false
+    // Método toggle()
+    // É uma palavra em inglês muito usada na programação
+    // Significa - Alternar/trocar/inverter estado
+    // Exemplo:
+    // Ligado -> desligado
+    // Aberto -> fechado
+    // True -> false
 
-toggle() {
+    toggle() {
 
-    // O operador ! significa "inverter"
-    this.concluida = !this.concluida;
+        // O operador ! significa "inverter"
+        this.concluida = !this.concluida;
 
     }
 
@@ -42,46 +42,106 @@ toggle() {
 class App {
     constructor() {
 
-    // Array de tarefas 
-    // Aqui ficam armazenados todos os objetos criados
-    // Exemplo:
-    // tarefa {texto: "1. Estudar, concluida: false"},
-    // tarefa {texto: "1. Treinar, concluida: true"},
+        // Array de tarefas 
+        // Aqui ficam armazenados todos os objetos criados
+        // Exemplo:
+        // tarefa {texto: "1. Estudar, concluida: false"},
+        // tarefa {texto: "1. Treinar, concluida: true"},
 
-    this.tarefas = [];
-    
+        this.tarefas = [];
+
     }
 
     adicionarTarefa() {
 
-    // Pega o elemento input do html
-    const input = document.getElementById("tarefaInput");
+        // Pega o elemento input do html
+        const input = document.getElementById("tarefaInput");
 
-    // Pega o texto digitado pelu usuário
-    const texto = input.value;
+        // Pega o texto digitado pelu usuário
+        const texto = input.value;
 
-    // Verifica se o usuário deixou vazio
-    // Se vazio == return encerrar o método imediatamente
+        // Verifica se o usuário deixou vazio
+        // Se vazio == return encerrar o método imediatamente
 
-    if (texto ==="") return;
+        if (texto === "") return;
 
-    // Cria um novo objeto da classe tarefa
+        // Cria um novo objeto da classe tarefa
+        const novaTarefa = new Tarefa(texto);
 
-    const novaTarefa = new Tarefa(texto);
+        // Adiciona o objeto dentro do array tarefas
+        this.tarefas.push(novaTarefa);
+
+        // Limpa o campo input 
+        input.value = "";
+
+        //Atualiza a tela
+        this.render();
+
+    }
+
+    render() {
+
+        // Pega a lista do HTML
+        const lista = document.getElementById("lista");
+
+        // Isso evita duplicações na tela
+        lista.innerHTML = "";
 
 
 
+        this.tarefas.forEach((tarefa, index) => {
+            const li = document.createElement("li");
+
+            //innerHTML adiciona html dentro da li
+            li.innerHTML = `
+
+    <!--
+          Se tarefa.concluida for TRUE:
+          adiciona a classe "concluida"
+
+          Se for FALSE:
+          não adiciona nada
+        -->
+
+        <span class="${tarefa.concluida ? "concluida" : ""}">
+          ${tarefa.texto}
+        </span>
+
+        <div>
+
+          <!--
+            Botão para concluir/desmarcar tarefa
+          -->
+          <button onclick="app.toggleTarefa(${index})">
+            ✔
+          </button>
+
+          <!--
+            Botão para remover tarefa
+          -->
+          <button onclick="app.removerTarefa(${index})">
+            🗑️
+          </button>
+
+        </div>
+      `;
+
+            // Adiciona a <li> dentro da lista dentro <ul>
+
+            lista.appendChild(li);
 
 
 
+        });
 
 
     }
 
-
-
-
 }
+
+// -------------------------------------
+
+// 
 
 
 
