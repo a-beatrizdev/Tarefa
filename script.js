@@ -137,6 +137,16 @@ class App {
 
     }
 
+    toggleTarefa(index) {
+        this.tarefas[index].toggle();
+        this.render();
+    }
+
+    removerTarefa(index) {
+        this.tarefas.splice(index, 1);
+        this.render();
+    }
+
 }
 
 // -------------------------------------
