@@ -140,8 +140,21 @@ class App {
 }
 
 // -------------------------------------
+// CRIAÇÃO DO OBJETO PRINCIPAL 
 
-// 
+// Aqui estamos criando UM OBJETO da classe App
+// Esse objeto será responsável por controlar toda a aplicação. 
+// Depois disso podemos usar:
+// app.adicionarTarefa()
+// app.render()
+// app.removerTarefa()
+
+//
+// -----------------------------------
+
+const app = new App();
+
+
 
 
 
