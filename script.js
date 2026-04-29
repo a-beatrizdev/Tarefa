@@ -77,6 +77,8 @@ class App {
         //Atualiza a tela
         this.render();
 
+
+
     }
 
     render() {
@@ -133,6 +135,19 @@ class App {
 
 
         });
+
+        // Conta quantas tarefas estão concluídas
+        const concluidas = this.tarefas.filter(t => t.concluida).length;
+
+        // Total de tarefas
+        const total = this.tarefas.length;
+
+        // Calcula as pendentes
+        const pendentes = total - concluidas;
+
+        // Atualiza o texto no HTML
+        const resumo = document.getElementById("resumo");
+        resumo.textContent = `Concluídas: ${concluidas} | Pendentes: ${pendentes}`;
 
 
     }
