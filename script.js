@@ -40,7 +40,43 @@ toggle() {
 // - Atualizar a tela
 
 class App {
-    constructor()
+    constructor() {
+
+    // Array de tarefas 
+    // Aqui ficam armazenados todos os objetos criados
+    // Exemplo:
+    // tarefa {texto: "1. Estudar, concluida: false"},
+    // tarefa {texto: "1. Treinar, concluida: true"},
+
+    this.tarefas = [];
+    
+    }
+
+    adicionarTarefa() {
+
+    // Pega o elemento input do html
+    const input = document.getElementById("tarefaInput");
+
+    // Pega o texto digitado pelu usuário
+    const texto = input.value;
+
+    // Verifica se o usuário deixou vazio
+    // Se vazio == return encerrar o método imediatamente
+
+    if (texto ==="") return;
+
+    // Cria um novo objeto da classe tarefa
+
+    const novaTarefa = new Tarefa(texto);
+
+
+
+
+
+
+
+
+    }
 
 
 
