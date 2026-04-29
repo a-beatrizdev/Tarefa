@@ -39,7 +39,13 @@ toggle() {
 // - Marcar tarefas
 // - Atualizar a tela
 
+class App {
+    constructor()
 
+
+
+
+}
 
 
 
